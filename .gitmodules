@@ -1,0 +1,6 @@
+[submodule "bjc.py"]
+	path = bjc.py
+	url = git://github.com/cs10/bjc.py.git
+[submodule "snap"]
+	path = snap
+	url = git://github.com/cycomachead/snap.git
