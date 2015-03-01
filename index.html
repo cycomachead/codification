@@ -6,9 +6,6 @@
     <link rel="shortcut icon" href="favicon.ico">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <script src="snap/morphic.js"></script>
     <script src="snap/widgets.js"></script>
     <script src="snap/blocks.js"></script>
@@ -26,23 +23,26 @@
     <script type="text/javascript">
       var world;
       window.onload = function () {
-        world = new WorldMorph(document.getElementById('world'), false);
-                world.worldCanvas.focus();
+        var canvas = document.getElementById('world');
+        canvas.width = document.width / 2;
+        canvas.height = document.height - 100;
+        world = new WorldMorph(canvas, false);
+        world.worldCanvas.focus();
         new IDE_Morph(false).openIn(world);
         setInterval(loop, 1);
+        function loop() {
+          world.doOneCycle();
+        }
       };
-      function loop() {
-        world.doOneCycle();
-      }
     </script>
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+      
     <style type="text/css">
-    body {
-      height: 100%;
-    }
     .half {
       width: 50%;
-      height: 100%;
-      max-height: 100%;
+      height: auto;
     }
     .left {
       left: 0;
@@ -52,14 +52,28 @@
     .header, .footer {
       height: 50px;
     }
-    </style> 
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night-blue.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/languages/python.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">
+    
+    </script> 
+    
   </head>
   <body style="margin: 0;">
-    <header class='header'>
-      header
-    </header>
+    <div class='header center'>
+        <div class="col-md-6"></div>
+        <div class="col-md-1 center">
+          <button class="btn btn-large center btn-primary">
+            Covert to Python!
+          </button>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
     <div class="container-responsive">
-      <div class="row">
+      <div class="row" style="height: 100%">
         <div class="col-md-6 left snap">
           <canvas id="world" tabindex="1">
             Canvas not supported
