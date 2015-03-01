@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Snap! Build Your Own Blocks. Beta</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="snap/morphic.js"></script>
+    <script src="snap/widgets.js"></script>
+    <script src="snap/blocks.js"></script>
+    <script src="snap/threads.js"></script>
+    <script src="snap/objects.js"></script>
+    <script src="snap/gui.js"></script>
+    <script src="snap/paint.js"></script>
+    <script src="snap/lists.js"></script>
+    <script src="snap/byob.js"></script>
+    <script src="snap/xml.js"></script>
+    <script src="snap/store.js"></script>
+    <script src="snap/locale.js"></script>
+    <script src="snap/cloud.js"></script>
+    <script src="snap/sha512.js"></script>
+    <script type="text/javascript">
+      var world;
+      window.onload = function () {
+        world = new WorldMorph(document.getElementById('world'), false);
+                world.worldCanvas.focus();
+        new IDE_Morph(false).openIn(world);
+        setInterval(loop, 1);
+      };
+      function loop() {
+        world.doOneCycle();
+      }
+    </script>
+    <style type="text/css">
+    body {
+      height: 100%;
+    }
+    .half {
+      width: 50%;
+      height: 100%;
+      max-height: 100%;
+    }
+    .left {
+      left: 0;
+    }
+    .right {
+    }
+    .header, .footer {
+      height: 50px;
+    }
+    </style> 
+  </head>
+  <body style="margin: 0;">
+    <header class='header'>
+      header
+    </header>
+    <div class="container-responsive">
+      <div class="row">
+        <div class="col-md-6 left snap">
+          <canvas id="world" tabindex="1">
+            Canvas not supported
+          </canvas>
+        </div>
+        <div class="col-md-6 right output">
+          <pre>
+            <code>
+              Code be here
+            </code>
+          </pre>
+        </div>
+      </div>
+    </div>
+    <footer>
+      footer
+    </footer>
+  </body>
+</html>
